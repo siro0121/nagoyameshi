@@ -1,0 +1,85 @@
+body {
+  margin: 0 auto 0 auto;
+  font-family: "Source Sans Pro", "Hiragino Kaku Gothic ProN", Meiryo, Arial, sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*ナビゲーションの装飾*/
+#header-nav ul {
+  display: flex;
+  gap: 8px;
+  margin-right: 120px;
+}
+
+#header-nav li {
+  list-style: none;
+  padding-top: 50px;
+  
+}
+
+/*ナビゲーションリンクの装飾*/
+#header-nav a {
+  text-decoration: none;
+  color: black;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+#header-nav a:hover {
+  text-decoration: underline;
+}
+
+/*ロゴの装飾*/
+.logo {
+  margin-left: 40px;
+  margin-top: 20px;
+  height: 60px;
+  display: inline-block;
+}
+
+.restaurant-img img {
+  width: 200px;
+  height: 300px;
+}
+
+/*スワイパー*/
+
+.swiper.mySwiper {
+  position: relative;
+  height: 100%;
+}
+
+.swiper-wrapper {
+  display: flex;
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}

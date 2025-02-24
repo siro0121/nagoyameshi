@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}NagoyaMeshi{% endblock %}
+{% block content %}
+  <header>
+    <!--ロゴ-->
+    <a href="{% url 'top' %}">
+      <img src="{% static 'img/logo.png' %}" alt="トップページに戻る"        class="logo">
+    </a>
+    <!--ナビゲーション-->
+    <nav id="header-nav">
+      <ul>
+        <li><a href="">ログイン</a></li>
+        <li><a hewf="">新規登録</a></li>
+      </ul>
+    </nav>
+  </header>
+
+ 
+  <main>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="{% static 'img/breakfast3.webp' %}" alt="画像"></div>
+        <div class="swiper-slide"><img src="{% static 'img/cyuukaryouri.webp' %}" alt="画像"></div>
+        <div class="swiper-slide"><img src="{% static 'img/wasyoku.webp' %}" alt="画像"></div>
+        <div class="swiper-slide"><img src="{% static 'img/kaisendon.webp' %}" alt="画像"></div>
+        <div class="swiper-slide"><img src="{% static 'img/kaisendon2.webp' %}" alt="画像"></div>
+        <div class="swiper-slide"><img src="{% static 'img/izakayamentaitamagoyaki.webp' %}" alt="画像"></div>
+        <div class="swiper-slide"><img src="{% static 'img/Hamburg steak.webp' %}" alt="画像"></div>
+        <div class="swiper-slide"><img src="{% static 'img/アヒージョ.webp' %}" alt="画像"></div>
+        <div class="swiper-slide"><img src="{% static 'img/kare-teisyoku.webp' %}" alt="画像"></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  </main>
+
+{% endblock %}
