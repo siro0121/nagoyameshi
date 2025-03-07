@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}ログイン{% endblock %}
+{% block title %}ログイン - NagoyaMeshi{% endblock %}
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/form.css' %}">
+  <header>
+    <a href="{% url 'top' %}">
+      <img src="{% static 'img/logo.png' %}" alt="トップページに戻る" class="logo">
+    </a>
+  </header>
 
-<div class="form-container">
+  <div class="form-container">
     <h2>ログイン</h2>
     <form method="POST">
         {% csrf_token %}

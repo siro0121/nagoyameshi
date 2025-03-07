@@ -16,17 +16,28 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from nagoya import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
+from nagoya import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.TopView.as_view(), name="top"),
+    path('', views.top, name='top'),
     path('crud/', views.ProductListView.as_view(), name="list"),
     path('crud/new/', views.ProductCreateView.as_view(), name="new"),
     path('crud/edit/<int:pk>', views.ProductUpdateView.as_view(), name="edit"),
     path('crud/delete/<int:pk>', views.ProductDeleteView.as_view(), name="delete"),
+    path('register/', views.register, name='register'),# 新規登録ページ
+    path('login/', views.login_view, name='login'),  # ログインページを追加
+    path('mypage/', views.mypage, name='mypage'),  # ユーザーページ
+    path('logout/', auth_views.LogoutView.as_view(next_page='top'), name='logout'),
+    path('restaurant/<int:restaurant_id>/review/', views.add_review, name='add_review'),
+    path('restaurant/<int:restaurant_id>/', views.restaurant_detail, name='restaurant_detail'),
+    path('restaurants/', views.restaurant_list, name='restaurant_list'),
+    path('restaurants/<int:id>/', views.restaurant_detail, name='restaurant_detail'),
+
 ]
 
 if settings.DEBUG:

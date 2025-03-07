@@ -145,4 +145,8 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media_local'
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'top'
+LOGOUT_REDIRECT_URL = 'top'
+
 

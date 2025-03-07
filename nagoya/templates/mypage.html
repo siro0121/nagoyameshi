@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}マイページ{% endblock %}
+
+{% block content %}
+<h2>ようこそ、{{ user.username }} さん！</h2>
+<p>メールアドレス: {{ user.email }}</p>
+<p>登録日: {{ user.date_joined }}</p>
+
+<a href="{% url 'logout' %}">ログアウト</a>
+{% endblock %}

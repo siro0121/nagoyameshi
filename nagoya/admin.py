@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import restaurant, Category
+from .models import Restaurant, Category
 from django.utils.safestring import mark_safe
 
 
@@ -13,6 +13,6 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
     search_fields = ('name',)
 
-admin.site.register(restaurant, ProductAdmin)
+admin.site.register(Restaurant, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
 # Register your models here.

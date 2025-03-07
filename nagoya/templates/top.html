@@ -3,22 +3,11 @@
 
 {% block title %}NagoyaMeshi{% endblock %}
 {% block content %}
-  <header>
-    <!--ロゴ-->
-    <a href="{% url 'top' %}">
-      <img src="{% static 'img/logo.png' %}" alt="トップページに戻る"        class="logo">
-    </a>
-    <!--ナビゲーション-->
-    <nav id="header-nav">
-      <ul>
-        <li><a href="">ログイン</a></li>
-        <li><a hewf="">新規登録</a></li>
-      </ul>
-    </nav>
-  </header>
 
- 
   <main>
+    
+    
+
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide"><img src="{% static 'img/breakfast3.webp' %}" alt="画像"></div>
@@ -35,9 +24,64 @@
       <div class="swiper-button-prev"></div>
       <div class="swiper-pagination"></div>
     </div>
+
+    <h1 class="stylish-heading">おすすめの店舗</h1>
+<div class="restaurant-container">
+  {% if restaurants %} 
+  {% for restaurant in restaurants %}
+   <!-- 店舗カード全体をリンクにする -->
+   <a href="{% url 'restaurant_detail' restaurant.id %}" class="restaurant-card-link">
   
+    <div class="restaurant-card">
+      <!-- 画像 -->
+      <div class="restaurant-image">
+        {% if restaurant.img %}
+          <img src="{{ restaurant.img.url }}" alt="{{ restaurant.name }}">
+        {% else %}
+          <img src="{% static 'img/noImage.png' %}" alt="No Image">
+        {% endif %}
+      </div>
+
+      <!-- 店舗情報 -->
+      <div class="restaurant-info">
+        <h2>{{ restaurant.name }}</h2>
+        <p class="category">{{ restaurant.category }}</p>
+        <p class="address">📍 {{ restaurant.address }}</p>
+
+        <!-- ⭐ 追加: 星評価ゲージ -->
+        <div class="star-rating">
+          <div class="stars">
+            <div class="filled-stars" style="width: {{ restaurant.star_percentage }}%;"></div>
+          </div>
+          <span>{{ restaurant.average_rating|floatformat:1 }}/5</span>
+        </div>
+
+        <!-- 詳細ボタン -->
+        <a href="{% url 'restaurant_detail' restaurant.id %}" class="detail-btn">詳細を見る</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>  <!-- ✅ `<div class="restaurant-list">` を閉じる -->
+    
+    {% else %}
+      <p>表示できる店舗がありません。</p>
+    {% endif %}
+
+     <!-- カテゴリ別セクション -->
+     <h1 class="stylish-heading">カテゴリ別</h1>
+     <div class="category-buttons">
+       <a href="{% url 'restaurant_list' %}?category=和食" class="category-button">和食</a>
+       <a href="{% url 'restaurant_list' %}?category=洋食" class="category-button">洋食</a>
+       <a href="{% url 'restaurant_list' %}?category=イタリアン" class="category-button">イタリアン</a>
+       <a href="{% url 'restaurant_list' %}?category=カフェ" class="category-button">カフェ</a>
+       <a href="{% url 'restaurant_list' %}?category=ラーメン" class="category-button">ラーメン</a>
+     </div>
+    
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  </main>
+    <script src="{% static 'js/script.js' %}"></script>
+    
+    </main>  <!-- ✅ `<main>` を閉じる -->
+    {% endblock %}
 
-{% endblock %}
+  

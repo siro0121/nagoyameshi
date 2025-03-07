@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}店舗一覧{% endblock %}
+
+{% block content %}
+<h1 class="stylish-heading">検索結果</h1>
+
+<div class="restaurant-container">
+    {% for restaurant in restaurants %}
+        <div class="restaurant-card" onclick="window.location.href='{% url 'restaurant_detail' restaurant.id %}'">
+            
+            <!-- 画像 -->
+            <div class="restaurant-image">
+                {% if restaurant.img %}
+                    <img src="{{ restaurant.img.url }}" alt="{{ restaurant.name }}">
+                {% else %}
+                    <img src="{% static 'img/noImage.png' %}" alt="No Image">
+                {% endif %}
+            </div>
+
+            <!-- 店舗情報 -->
+            <div class="restaurant-info">
+                <h2>{{ restaurant.name }}</h2>
+                <p class="category">{{ restaurant.category }}</p>
+                <p class="address">📍 {{ restaurant.address }}</p>
+
+                <!-- ⭐ 星評価 -->
+                <div class="star-rating">
+                    <div class="stars">
+                        <div class="filled-stars" style="width: {{ restaurant.star_percentage }}%;"></div>
+                    </div>
+                    <span>{{ restaurant.average_rating|floatformat:1 }}/5</span>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>表示できる店舗がありません。</p>
+    {% endfor %}
+</div>
+{% endblock %}

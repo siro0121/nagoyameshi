@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>{{ restaurant.name }} のレビューを書く</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">投稿</button>
+  </form>
+  <a href="{% url 'restaurant_detail' restaurant.id %}">戻る</a>
+{% endblock %}

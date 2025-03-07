@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ restaurant.name }} の詳細{% endblock %}
+
+{% block content %}
+<main>
+  <div class="restaurant-detail">
+    <h1 class="restaurant-name">
+      
+      {{ restaurant.name }}
+  </h1>
+
+   <!-- 星評価表示 -->
+   <div class="star-rating">
+    <div class="stars">
+      <div class="filled-stars" style="width: {{ restaurant.star_percentage }}%;"></div>
+    </div>
+    <span>{{ restaurant.average_rating|floatformat:1 }}/5</span>
+  </div>
+  
+    <!-- 画像表示 -->
+    <div class="restaurant-image2">
+      {% if restaurant.img %}
+        <img src="{{ restaurant.img.url }}" alt="{{ restaurant.name }}">
+      {% else %}
+        <img src="{% static 'img/noImage.png' %}" alt="No Image">
+      {% endif %}
+    <p>カテゴリー: {{ restaurant.category }}</p>
+    <p>住所: 📍 {{ restaurant.address }}</p>
+
+    
+    </div>
+
+   
+
+    <p>{{ restaurant.description }}</p> <!-- 説明文がある場合に表示 -->
+
+    <a href="{% url 'top' %}" class="back-btn">トップページに戻る</a>
+  </div>
+</main>
+{% endblock %}
